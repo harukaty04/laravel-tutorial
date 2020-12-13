@@ -18,29 +18,28 @@ body {
   padding: 0 2%;
   margin-bottom: 3rem;
 }
-
 .my-navbar-brand {
-  font-size: 18px;
-}
-
-.my-navbar-brand,
-.my-navbar-item {
-  color: #8c8c8c;
-}
-
-.my-navbar-brand:hover,
-a.my-navbar-item:hover {
-  color: #ffffff;
-}
-
-.table td:nth-child(2),
-.table td:nth-child(3),
-.table td:nth-child(4) {
-  white-space: nowrap;
-  width: 1px;
-}
-
-.form-control[disabled],
-.form-control[readonly] {
-  background-color: #fff;
-}
+    font-size: 18px;
+  }
+  
+  .my-navbar-brand,
+  .my-navbar-item {
+    color: #8c8c8c;
+  }
+  
+  .my-navbar-brand:hover,
+  a.my-navbar-item:hover {
+    color: #ffffff;
+  }
+  
+  .table td:nth-child(2),
+  .table td:nth-child(3),
+  .table td:nth-child(4) {
+    white-space: nowrap;
+    width: 1px;
+  }
+  
+  .form-control[disabled],
+  .form-control[readonly] {
+    background-color: #fff;
+  }
