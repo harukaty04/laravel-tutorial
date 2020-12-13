@@ -22,9 +22,11 @@ class TaskController extends Controller
         return view('tasks/index', [
             'folders' => $folders,
             'current_folder_id' => $id,
-
-        // return view('tasks/index', [
-        //     'folders' => $folders,
+            'tasks' => $tasks
         ]);
+
+        // その2
+        // $current_folder_id = $id;
+        // return view('tasks/index', compact('folders', 'current_folder_id', 'tasks'));
     }
 }
