@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
+
 class Task extends Model
 {
 
@@ -17,10 +18,7 @@ class Task extends Model
      * 状態のラベル
      * @return string
      */
-    public function tasks()
-    {
-        return $this->hasMany('App\Task');
-    }
+
 
     public function getFormattedDueDateAttribute()
     {
