@@ -54,6 +54,12 @@ return [
             'prefix_indexes' => true,
             'strict' => true,
             'engine' => null,
+
+        'sqlite_testing' => [
+            'driver' => 'sqlite',
+            'database' => ':memory:',
+            'prefix' => '',
+            ],
         ],
 
         'pgsql' => [
