@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Folder; 
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateFolder; 
+use App\Http\Requests\CreateTask;
 
 class FolderController extends Controller
 {
@@ -28,4 +29,5 @@ class FolderController extends Controller
         'id' => $folder->id,
     ]);
     }
+
 }
