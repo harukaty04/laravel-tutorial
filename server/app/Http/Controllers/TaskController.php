@@ -37,4 +37,14 @@ class TaskController extends Controller
         // $current_folder_id = $id;
         // return view('tasks/index', compact('folders', 'current_folder_id', 'tasks'));
     }
+    /**
+     * GET /folders/{id}/tasks/create 
+     * コントローラーのメソッドの引数で受け取りview関数でテンプレートに渡す
+     */
+    public function showCreateForm(int $id)
+    {
+    return view('tasks/create', [
+        'folder_id' => $id
+    ]);
+}
 }
