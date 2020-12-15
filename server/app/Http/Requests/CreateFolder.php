@@ -12,6 +12,7 @@ class CreateFolder extends FormRequest
      * @return bool
      */
     //リクエストの内容に基づいた権限チェック
+
     public function authorize()
     {
         return true;
@@ -23,16 +24,19 @@ class CreateFolder extends FormRequest
      * @return array
      */
     //入力欄ごとにテェックするルールを定義
+
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title' => 'required|max:20',
         ];
     }
+
     public function attributes()
     {
     return [
         'title' => 'フォルダ名',
     ];
     }
+
 }
