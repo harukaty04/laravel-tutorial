@@ -14,6 +14,9 @@
     </nav>
 </header>
 <main>
+@extends('layout')
+
+@section('content')
     <div class="container">
         <div class="row">
         <div class="col col-md-4">
@@ -76,6 +79,7 @@
         </div>
         </div>
     </div>
+@endsection
     </main>
 </body>
 </html>
