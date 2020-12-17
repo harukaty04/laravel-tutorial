@@ -14,9 +14,6 @@
     </nav>
 </header>
 <main>
-@extends('layout')
-
-@section('content')
     <div class="container">
         <div class="row">
         <div class="col col-md-4">
@@ -48,7 +45,7 @@
     <div class="panel-heading">タスク</div>
     <div class="panel-body">
         <div class="text-right">
-        <a href="{{ route('tasks.create', ['id' => $current_folder_id]) }}" class="btn btn-default btn-block">
+        <a href="#" class="btn btn-default btn-block">
             タスクを追加する
         </a>
         </div>
@@ -79,7 +76,6 @@
         </div>
         </div>
     </div>
-@endsection
     </main>
 </body>
 </html>
