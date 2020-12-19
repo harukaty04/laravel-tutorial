@@ -1,9 +1,7 @@
 @extends('layout')
 
 @section('styles')
-    @include('share.flatpickr.styles')
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
+  @include('share.flatpickr.styles')
 @endsection
 
 @section('content')
@@ -28,7 +26,7 @@
               <div class="form-group">
                 <label for="title">タイトル</label>
                 <input type="text" class="form-control" name="title" id="title"
-                       value="{{ old('title') ?? $task->title }}" />
+                       value="{{ old('title', $task->title) }}" />
               </div>
               <div class="form-group">
                 <label for="status">状態</label>
@@ -46,7 +44,7 @@
               <div class="form-group">
                 <label for="due_date">期限</label>
                 <input type="text" class="form-control" name="due_date" id="due_date"
-                       value="{{ old('due_date') ?? $task->formatted_due_date }}" />
+                       value="{{ old('due_date', $task->formatted_due_date) }}" />
               </div>
               <div class="text-right">
                 <button type="submit" class="btn btn-primary">送信</button>
@@ -60,14 +58,5 @@
 @endsection
 
 @section('scripts')
-    @include('share.flatpicker.scripts')
-  <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
-  <script src="https://npmcdn.com/flatpickr/dist/l10n/ja.js"></script>
-  <script>
-    flatpickr(document.getElementById('due_date'), {
-      locale: 'ja',
-      dateFormat: "Y/m/d",
-      minDate: new Date()
-    });
-  </script>
+  @include('share.flatpickr.scripts')
 @endsection
