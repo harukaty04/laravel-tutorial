@@ -2,10 +2,13 @@
 
 namespace Tests\Feature;
 
+use App\Folder;
 use App\Http\Requests\CreateTask;
 use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\User;
+use App\Task;
 
 class TaskTest extends TestCase
 {
@@ -15,13 +18,13 @@ class TaskTest extends TestCase
     /**
      * 各テストメソッドの実行前に呼ばれる
      */
-    public function setUp()
+    public function setUp():void
     {
         parent::setUp();
 
-        // テストケース実行前にフォルダデータを作成する
-        $this->seed('FoldersTableSeeder');
+        $this->setTestData();
     }
+
 
     /**
      * 期限日が日付ではない場合はバリデーションエラー
@@ -55,24 +58,35 @@ class TaskTest extends TestCase
         ]);
     }
 
-        /**
+    /**
      * 状態が定義された値ではない場合はバリデーションエラー
-    * @test
+     * @test
     */
     public function status_should_be_within_defined_numbers()
     {
-    $this->seed('TasksTableSeeder');
+        // Factoryを使ってデータを作成する
+        $folder = factory(Folder::class)->create();
+        $task = factory(Task::class)->create();
+        $due_date = Carbon::today()->addDay(5);
 
-    $response = $this->post('/folders/1/tasks/1/edit', [
-        'title' => 'Sample task',
-        'due_date' => Carbon::today()->format('Y/m/d'),
-        'status' => 999,
-    ]);
+        $response = $this->post('/folders/' . $folder->id . '/tasks/' . $task->id . '/edit', [
+            'title' => 'Sample task',
+            'due_date' => $due_date,
+            'status' => 999,
+        ]);
 
-    $response->assertSessionHasErrors([
-        'status' => '状態 には 未着手、着手中、完了 のいずれかを指定してください。',
-    ]);     
-
+        $response->assertSessionHasErrors([
+            'status' => '状態 には 未着手、着手中、完了 のいずれかを指定してください。',
+        ]);     
     }
 
+    /**
+     * テストデータをセット
+     */
+    private function setTestData()
+    {
+        $this->seed('UsersTableSeeder');
+        // テストケース実行前にフォルダデータを作成する
+        $this->seed('FoldersTableSeeder');
+    }
 }
