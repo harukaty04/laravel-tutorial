@@ -7,11 +7,15 @@ use App\Http\Requests\CreateTask;
 use App\Http\Requests\EditTask;
 use App\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class TaskController extends Controller
 {
     public function index(int $id)
     {
+        $folders = Auth::user()->folders()->get();
+        
         // すべてのフォルダを取得する
         $folders = Folder::all();
 
@@ -20,12 +24,14 @@ class TaskController extends Controller
 
         // 選ばれたフォルダに紐づくタスクを取得する
         $tasks = $current_folder->tasks()->get();
+        
 
         return view('tasks/index', [
             'folders' => $folders,
             'current_folder_id' => $current_folder->id,
             'tasks' => $tasks,
         ]);
+    
     }
 
     public function showCreateForm(int $id)

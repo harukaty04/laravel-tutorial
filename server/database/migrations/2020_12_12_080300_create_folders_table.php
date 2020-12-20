@@ -18,7 +18,6 @@ class CreateFoldersTable extends Migration
             $table->string('title', 20);
             $table->timestamps();
 
-            $table->foreign('folder_id')->references('id')->on('folders');
         });
     }
 
